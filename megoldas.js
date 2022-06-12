@@ -1,4 +1,4 @@
-//1.) Diák infó
+//1.) Diák infó [DiakInfo]
 function diakInfo(name, team, course) {
     if (course == true) {
         console.log(name + " " + "[Team0" + team + "]" + " - Junior Frontend");
@@ -9,10 +9,15 @@ function diakInfo(name, team, course) {
 }
 diakInfo("Minta Márton", 8, true);
 diakInfo("Minta Márton", 8, false);
-//2.) Magatartás - Szorgalom Szöveges értékelés
+//2.) Magatartás - Szorgalom Szöveges értékelés [SzovegesErtekeles]
 function szovegesErtekeles(grade) {
     var evaluating;
-    evaluating = [["hanyag", "rossz"], ["változó", "változó"], ["jó", "jó"], ["példás", "példás"]];
+    evaluating = [
+        ["hanyag", "rossz"],
+        ["változó", "változó"],
+        ["jó", "jó"],
+        ["példás", "példás"],
+    ];
     switch (grade) {
         case 2:
             console.log("[" + evaluating[0] + "]");
@@ -26,12 +31,13 @@ function szovegesErtekeles(grade) {
         case 5:
             console.log("[" + evaluating[3] + "]");
             break;
-        default: console.log("Nem jó értéket adtál meg! Kérlek válassz 2,3,4,5 között!");
+        default:
+            console.log("Nem jó értéket adtál meg! Kérlek válassz 2,3,4,5 között!");
     }
 }
 szovegesErtekeles(1);
 szovegesErtekeles(3);
-//3.) Hárommal osztható számok listája
+//3.) Hárommal osztható számok listája [HarommalOszthatokSzama]
 var arrayThree = [10, 23, 12, 24, 31, 33, 42, 20];
 function HarommalOszthatokSzama(vizsgaltTomb) {
     var oszthatok = 0;
@@ -43,3 +49,20 @@ function HarommalOszthatokSzama(vizsgaltTomb) {
     return oszthatok;
 }
 HarommalOszthatokSzama(arrayThree);
+
+//4.) Nyerőszám sorsoló [Nyeroszamok]
+function randomszamGenerator(alsoHatar, felsoHatar, mennyiseg) {
+    if (mennyiseg > felsoHatar - alsoHatar) {
+        return [];
+    }
+    var randomTomb = [];
+    for (var i = 0; i < mennyiseg; i++) {
+        var rnd = 0;
+        do {
+            rnd = Math.round(Math.random() * (felsoHatar - alsoHatar)) + alsoHatar;
+        } while (randomTomb.indexOf(rnd) >= 0);
+        randomTomb.push(rnd);
+    }
+    return randomTomb;
+}
+console.log(randomszamGenerator(5, 100, 40));
