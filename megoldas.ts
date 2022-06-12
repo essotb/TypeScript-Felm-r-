@@ -1,6 +1,6 @@
 //1.) Diák infó [DiakInfo]
 
-function diakInfo(name, team, course) {
+function diakInfo(name: string, team: number, course: boolean) {
   if (course == true) {
     console.log(name + " " + "[Team0" + team + "]" + " - Junior Frontend");
   } else {
@@ -13,7 +13,7 @@ diakInfo("Minta Márton", 8, false);
 
 //2.) Magatartás - Szorgalom Szöveges értékelés [SzovegesErtekeles]
 
-function szovegesErtekeles(grade: number): void {
+function szovegesErtekeles(grade: number): string {
   let evaluating: [string, string][];
   evaluating = [
     ["hanyag", "rossz"],
@@ -24,24 +24,24 @@ function szovegesErtekeles(grade: number): void {
 
   switch (grade) {
     case 2:
-      console.log("[" + evaluating[0] + "]");
+      return "[" + evaluating[0] + "]";
       break;
     case 3:
-      console.log("[" + evaluating[1] + "]");
+      return "[" + evaluating[1] + "]";
       break;
     case 4:
-      console.log("[" + evaluating[2] + "]");
+      return "[" + evaluating[2] + "]";
       break;
     case 5:
-      console.log("[" + evaluating[3] + "]");
+      return "[" + evaluating[3] + "]";
       break;
     default:
-      console.log("Nem jó értéket adtál meg! Kérlek válassz 2,3,4,5 között!");
+      return "Nem jó értéket adtál meg! Kérlek válassz 2,3,4,5 között!";
   }
 }
 
-szovegesErtekeles(1);
-szovegesErtekeles(3);
+console.log(szovegesErtekeles(1));
+console.log(szovegesErtekeles(3));
 
 //3.) Hárommal osztható számok listája [HarommalOszthatokSzama]
 
@@ -68,15 +68,14 @@ function randomszamGenerator(
   if (mennyiseg > felsoHatar - alsoHatar) {
     return [];
   }
-  const randomTomb: number[] = [];
-  for (let i = 0; i < mennyiseg; i++) {
-    let rnd = 0;
-    do {
-      rnd = Math.round(Math.random() * (felsoHatar - alsoHatar)) + alsoHatar;
-    } while (randomTomb.indexOf(rnd)>=0);
-    randomTomb.push(rnd);
+  const randomSet = new Set<number>();
+  while (randomSet.size < mennyiseg) {
+    randomSet.add(
+      Math.round(Math.random() * (felsoHatar - alsoHatar)) + alsoHatar
+    );
   }
-  return randomTomb;
+
+  return Array.from(randomSet);
 }
 
-console.log(randomszamGenerator(5,1,90));
+console.log(randomszamGenerator(5, 1, 90));
