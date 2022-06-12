@@ -48,10 +48,9 @@ function HarommalOszthatokSzama(vizsgaltTomb) {
     }
     return oszthatok;
 }
-HarommalOszthatokSzama(arrayThree);
-
+console.log(HarommalOszthatokSzama(arrayThree));
 //4.) Nyerőszám sorsoló [Nyeroszamok]
-function randomszamGenerator(alsoHatar, felsoHatar, mennyiseg) {
+function randomszamGenerator(mennyiseg, alsoHatar, felsoHatar) {
     if (mennyiseg > felsoHatar - alsoHatar) {
         return [];
     }
@@ -65,4 +64,4 @@ function randomszamGenerator(alsoHatar, felsoHatar, mennyiseg) {
     }
     return randomTomb;
 }
-console.log(randomszamGenerator(5, 100, 40));
+console.log(randomszamGenerator(5, 1, 90));

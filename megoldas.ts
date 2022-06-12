@@ -56,14 +56,14 @@ function HarommalOszthatokSzama(vizsgaltTomb: number[]): number {
   return oszthatok;
 }
 
-HarommalOszthatokSzama(arrayThree);
+console.log(HarommalOszthatokSzama(arrayThree));
 
 //4.) Nyerőszám sorsoló [Nyeroszamok]
 
 function randomszamGenerator(
+  mennyiseg: number,
   alsoHatar: number,
-  felsoHatar: number,
-  mennyiseg: number
+  felsoHatar: number
 ): number[] {
   if (mennyiseg > felsoHatar - alsoHatar) {
     return [];
@@ -79,4 +79,4 @@ function randomszamGenerator(
   return randomTomb;
 }
 
-console.log(randomszamGenerator(5,100,40));
+console.log(randomszamGenerator(5,1,90));
